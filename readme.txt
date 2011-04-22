@@ -16,18 +16,19 @@ Use IP.Board to manage your comments.
 
 == Description ==
 
-IP.Board Comments is a WordPress customization to allow you to use Invision Power Board or IP.Board to manage your WordPress comments. When a new post is made in WordPress, if the category is one of those mapped to an IPB category, it will cross-post the content to your IPB forum. At the same time, it will add a link to your WordPress post containing the url to join the discussion in progress. A forum link will also appear in your forum topic to read the full story. You may find it much easier to manage comments and users on the forum, rather than using the minimal WordPress comment system.
+IP.Board Comments for WordPress allows you to use IPB (IP.Board or Invision Power Board) to replace or enhance your WordPress comments. When a new WordPress post is created in a mapped category, it will cross-post to your IPB forum with a link back to the WordPress post. The IPB forum link is saved in a custom field and will appear in the footer of your post.
 
-Please fork and update the code with suggested improvements.
+You may find it much easier to manage comments and users on the forum, rather than using the minimal WordPress comment system.
 
-Ideas from: http://community.invisionpower.com/topic/336465-creating-a-topic-from-wordpress/
 
 == Installation ==
 
-You can now use the WordPress Settings > IPB Comments menu to map the forum categories to your WordPress categories, and enter the required information.
+1. Upload `ipb-comments-for-wordpress.php` to the `/wp-content/plugins/` directory
+2. Activate the plugin through the Plugins menu in WordPress
+3. In the IPB Comments menu, enter the Base Url and Base Path to your forums.
+4. Enter the Member ID from your IPB forum to post as.
+5. Enter IPB category numbers that match your existing WordPress categories.
 
-1. Upload `ipb-comments.php` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Upgrade Notice ==
 
