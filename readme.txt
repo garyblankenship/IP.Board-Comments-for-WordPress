@@ -36,7 +36,7 @@ Nothing to do.
 
 == Screenshots ==
 
-<screenshot-1.png>
+1. Screenshot of the IPB Comments menu.
 
 == Changelog ==
 
