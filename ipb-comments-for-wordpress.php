@@ -210,13 +210,13 @@ function ipb_section_main() {
 	?>
 	<style>
 	div.wrap ul.forum_settings li {
-		margin-top: 20px;
+		/*margin-top: 10px;*/
 	}
 	div.wrap ul.forum_settings li label {
 		display: block;
 		float: left;
-		width: 80px;
-		font-weight: bold;
+		width: 100px;
+		/*font-weight: bold;*/
 		text-align: bottom;
 		margin-top: 6px;
 	}
@@ -231,22 +231,25 @@ function ipb_section_main() {
 	}
 	</style>
 	<ul class="forum_settings">
-		<li>The base url to your forum. ex. http://yourforum.com<br />
+		<li>
 		<label for="base_url">Base Url:</label>
 		<input type="text" size="50" name="ipb_comments_options[ipb_field_url]" 
 			value="<?php echo $options['ipb_field_url']; ?>" />
+			<em>base url to your forum. ex. http://yourforum.com</em>
 		</li>
 
-		<li>The full path to your forum where initdata.php is located. ex. /var/www/forum<br />
+		<li>
 		<label for="base_path">Base Path:</label>
 		<input type="text" size="50" name="ipb_comments_options[ipb_field_path]" 
 			value="<?php echo $options['ipb_field_path']; ?>" />
+			<em>full path to your forum where initdata.php is located. ex. /var/www/forum</em>
 		</li>
 
-		<li>The forum member ID who will create the new topics. ex. 1<br />
+		<li>
 		<label for="member_id">Member ID:</label>
 		<input type="text" size="5" name="ipb_comments_options[ipb_field_member_id]" 
 			value="<?php echo $options['ipb_field_member_id']; ?>" />
+			<em>forum member ID who will create the new topics. ex. 1</em>
 		</li>
 	</ul>
 	<br style="clear:both;" />
