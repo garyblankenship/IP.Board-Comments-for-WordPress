@@ -3,7 +3,7 @@
 Contributors:      Beer
 Plugin Name:       IPB Comments for WordPress
 Plugin URI:        http://wordpress.org/extend/plugins/ipb-comments-for-wordpress/
-Tags:              invision, ipb, comments
+Tags:              invision, ipb, comments, ip.board, forum
 Author URI:        http://wordpress.org/extend/plugins/profile/beer
 Author:            Beer
 Donate link:       http://bit.ly/hYv2Ly
