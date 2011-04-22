@@ -9,8 +9,8 @@ Author:            Beer
 Donate link:       http://bit.ly/hYv2Ly
 Requires at least: 3.0
 Tested up to:      3.1.1
-Stable tag:        1.1
-Version:           1.1
+Stable tag:        1.1.1
+Version:           1.1.1
 
 Use IP.Board to manage your comments.
 
@@ -20,6 +20,9 @@ IP.Board Comments for WordPress allows you to use IPB (IP.Board or Invision Powe
 
 You may find it much easier to manage comments and users on the forum, rather than using the minimal WordPress comment system.
 
+Your IPB installation must reside on the same server as your WordPress installation.
+
+Requires at least: IP.Board 3.0 and PHP 5.2
 
 == Installation ==
 
