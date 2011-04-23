@@ -3,14 +3,14 @@
 Contributors:      Beer
 Plugin Name:       IPB Comments for WordPress
 Plugin URI:        http://wordpress.org/extend/plugins/ipb-comments-for-wordpress/
-Tags:              invision, ipb, comments, ip.board, forum
+Tags:              invision, ipb, comments, ip.board, forum, crosspost
 Author URI:        http://wordpress.org/extend/plugins/profile/beer
 Author:            Beer
 Donate link:       http://bit.ly/hYv2Ly
 Requires at least: 3.0
 Tested up to:      3.1.1
 Stable tag:        1.1.1
-Version:           1.1.1
+Version:           1.1.2
 
 Use IP.Board to manage your comments.
 
@@ -23,6 +23,15 @@ You may find it much easier to manage comments and users on the forum, rather th
 Your IPB installation must reside on the same server as your WordPress installation.
 
 Requires at least: IP.Board 3.0 and PHP 5.2
+
+Todo:
+* add ability to display most recent X replies on WordPress post
+* add ability to override/select a specific IPB category per post (Dashboard / New Post)
+* add ability to map specific WP Author/Editor/Admin users to IPB users (Dashboard / Users)
+* add ability to work with an IPB forum on a different server than WordPress install
+* add ability to cross-post old WP posts to forum
+* add a post template to be parsed when cross-posting (title, date, excerpt, slug, content)
+* buy more beer
 
 == Installation ==
 
@@ -43,7 +52,15 @@ Nothing to do.
 
 == Changelog ==
 
-Nothing yet.
+= 1.1.2 =
+* Separate stylesheet ipb-comments-for-wordpress.css
+
+= 1.1 =
+* Added screenshots
+* Fixed readme.txt
+
+= 1.0 =
+* First release.
 
 == Frequently Asked Questions ==
 

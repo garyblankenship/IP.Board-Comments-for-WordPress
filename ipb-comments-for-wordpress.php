@@ -3,8 +3,8 @@
 Plugin Name: IP.Board Comments
 Plugin URI: http://wordpress.org/extend/plugins/ipb-comments-for-wordpress/
 Description: Uses IP.Board for your comments.  When a new post is published, it creates a new topic with your IP.Board and adds the link to the new topic at the end of your post.
-Version: 1.1
-Author: Darkness
+Version: 1.1.2
+Author: Beer
 Author URI: http://wordpress.org/extend/plugins/profile/beer
 License: GPLv3
 Donate Link: https://github.com/darkness
@@ -176,6 +176,8 @@ add_action('admin_init', 'ipb_comments_admin_init');
 
 function ipb_comments_admin_init() {
 
+	wp_enqueue_style('ipb_comments_style', plugins_url( 'ipb-comments-for-wordpress.css' , __FILE__ ) );
+
 	// Create the IPB Main Settings section
 	// http://codex.wordpress.org/Function_Reference/add_settings_section
 	add_settings_section( 'ipb_section_main',       // string used for 'id' attribute
@@ -208,28 +210,6 @@ function ipb_section_main() {
 	// http://codex.wordpress.org/Function_Reference/get_option
 	$options = get_option('ipb_comments_options');
 	?>
-	<style>
-	div.wrap ul.forum_settings li {
-		/*margin-top: 10px;*/
-	}
-	div.wrap ul.forum_settings li label {
-		display: block;
-		float: left;
-		width: 100px;
-		/*font-weight: bold;*/
-		text-align: bottom;
-		margin-top: 6px;
-	}
-	div.wrap ul.category_settings li {
-		padding-bottom: 5px;
-		border-bottom: 1px solid #dedede;
-		width: 500px;
-	}
-	div.wrap ul.category_settings li input {
-		margin-right: 15px;
-		margin-left: 10px;
-	}
-	</style>
 	<ul class="forum_settings">
 		<li>
 		<label for="base_url">Base Url:</label>
@@ -288,9 +268,9 @@ function ipb_section_categories() {
 /**
  * add topic url to end of post
  */
-add_filter('the_content', 'add_ipb_topic_url');
+add_filter('the_content', 'ipb_add_topic_url');
 
-function add_ipb_topic_url ( $content ) {
+function ipb_add_topic_url ( $content ) {
 	$meta = get_post_custom_values('forum_topic_url');
 
 	if ( empty($meta) ) return $content;

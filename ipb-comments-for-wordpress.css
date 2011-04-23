@@ -1,0 +1,20 @@
+div.wrap ul.forum_settings li {
+	/*margin-top: 10px;*/
+}
+div.wrap ul.forum_settings li label {
+	display: block;
+	float: left;
+	width: 100px;
+	/*font-weight: bold;*/
+	text-align: bottom;
+	margin-top: 6px;
+}
+div.wrap ul.category_settings li {
+	padding-bottom: 5px;
+	border-bottom: 1px solid #dedede;
+	width: 500px;
+}
+div.wrap ul.category_settings li input {
+	margin-right: 15px;
+	margin-left: 10px;
+}
