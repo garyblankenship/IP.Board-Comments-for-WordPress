@@ -24,7 +24,7 @@ Your IPB installation must reside on the same server as your WordPress installat
 
 Requires at least: IP.Board 3.0 and PHP 5.2
 
-Todo:
+= Todo =
 * add ability to display most recent X replies on WordPress post
 * add ability to override/select a specific IPB category per post (Dashboard / New Post)
 * add ability to map specific WP Author/Editor/Admin users to IPB users (Dashboard / Users)
@@ -60,7 +60,7 @@ Nothing to do.
 * Fixed readme.txt
 
 = 1.0 =
-* First release.
+* First release
 
 == Frequently Asked Questions ==
 
