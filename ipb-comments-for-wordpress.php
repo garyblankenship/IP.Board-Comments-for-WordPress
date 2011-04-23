@@ -3,10 +3,9 @@
 Plugin Name: IP.Board Comments
 Plugin URI: http://wordpress.org/extend/plugins/ipb-comments-for-wordpress/
 Description: Uses IP.Board for your comments.  When a new post is published, it creates a new topic with your IP.Board and adds the link to the new topic at the end of your post.
-Version: 1.1.2
+Version: 1.1.3
 Author: Beer
 Author URI: http://wordpress.org/extend/plugins/profile/beer
-License: GPLv3
 Donate Link: https://github.com/darkness
 Disclaimer: No warranty is provided. IP.Board 3.0, PHP 5.2 are required.
 Requires at least: 3.0
@@ -35,17 +34,20 @@ class WP_IPB {
 		/**
 		 * checking for required option values before continuing
 		 */
-		if ( ! isset($options['ipb_field_path']) OR ! file_exists($options['ipb_field_path']) ) {
+		if ( ! (isset($options['ipb_field_path']) OR file_exists($options['ipb_field_path'])) ) {
 			// the required path to the initdata.php folder is missing
-			// wp_die( __( 'Missing ipb_field_path.' ) );
+			wp_die( __( 'Missing ipb_field_path.' ) );
 			return FALSE;
 		}
 
 		if ( ! isset($options['ipb_field_member_id']) ) {
 			// the required member id to post from is missing
-			// wp_die( __( 'Missing ipb_field_member_id.' ) );
+			wp_die( __( 'Missing ipb_field_member_id.' ) );
 			return FALSE;
 		}
+
+		// http://codex.wordpress.org/Function_Reference/get_post
+		$wp = get_post($post_ID);
 
 		foreach ( get_the_category($wp->ID) as $cat ) {
 			if ( ! empty($options['categories'][$cat->slug]) ) {
@@ -55,10 +57,10 @@ class WP_IPB {
 		}
 
 		// we haven't found a matching category, do nothing
-		if ( ! isset($forumID) ) return FALSE;
-
-		// http://codex.wordpress.org/Function_Reference/get_post
-		$wp = get_post($post_ID);
+		if ( ! isset($forumID) ) {
+			wp_die( __( 'Missing forum ID' ) );
+			return FALSE;
+		}
 
 		// http://community.invisionpower.com/resources/documentation/index.html/_/developer-resources/custom-applications/
 		// http://community.invisionpower.com/resources/doxygen/annotated.html
@@ -94,12 +96,14 @@ class WP_IPB {
 			if ( $postClass->addTopic() ) {
 				$topicData = $postClass->getTopicData();
 				// add custom fields to our post
-				$topicUrl = sprintf("%s/topic/%s-%s",
-					$options['ipb_field_url'], $topicData['tid'], $topicData['title_seo']);
+				$topicUrl = $registry->getClass( 'output' )->buildSEOUrl( 'showtopic=' .$topicData['tid'], 'public', $topicData['title_seo'], 'showtopic' );
+				var_dump($topicUrl);
+				file_put_contents('plugin.error.log',$topicUrl);
+				exit();
 				update_post_meta($wp->ID, 'forum_topic_url', htmlentities($topicUrl));
 			} else {
-				// var_dump($postClass->_postErrors);
-				// var_dump($content);
+				var_dump($postClass->_postErrors);
+				var_dump($content);
 			}
 		}
 		catch (Exception $error) {
