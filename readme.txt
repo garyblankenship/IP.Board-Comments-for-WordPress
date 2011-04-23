@@ -46,6 +46,10 @@ Nothing to do.
 
 == Changelog ==
 
+= 1.1.3 =
+* Improved the topic creation url
+* Fixed a critical bug introduced in 1.1 that failed to get the category ID
+
 = 1.1.2 =
 * Separate stylesheet ipb-comments-for-wordpress.css
 
