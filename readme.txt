@@ -24,15 +24,6 @@ Your IPB installation must reside on the same server as your WordPress installat
 
 Requires at least: IP.Board 3.0 and PHP 5.2
 
-= Todo =
-* add ability to display most recent X replies on WordPress post
-* add ability to override/select a specific IPB category per post (Dashboard / New Post)
-* add ability to map specific WP Author/Editor/Admin users to IPB users (Dashboard / Users)
-* add ability to work with an IPB forum on a different server than WordPress install
-* add ability to cross-post old WP posts to forum
-* add a post template to be parsed when cross-posting (title, date, excerpt, slug, content)
-* buy more beer
-
 == Installation ==
 
 1. Upload `ipb-comments-for-wordpress.php` to the `/wp-content/plugins/` directory
@@ -48,7 +39,10 @@ Nothing to do.
 
 == Screenshots ==
 
-1. Screenshot of the IPB Comments menu.
+1. Screenshot of the IPB Comments menu
+2. Creating a new post in WordPress
+3. The new post created in WordPress
+4. The new topic created in the IP.Board forum category
 
 == Changelog ==
 
@@ -71,3 +65,13 @@ Coming soon.
 Donations are accepted.
 <http://bit.ly/hYv2Ly>
 
+== To Do ==
+
+= To Do =
+* add ability to display most recent X replies on WordPress post
+* add ability to override/select a specific IPB category per post (Dashboard / New Post)
+* add ability to map specific WP Author/Editor/Admin users to IPB users (Dashboard / Users)
+* add ability to work with an IPB forum on a different server than WordPress install
+* add ability to cross-post old WP posts to forum
+* add a post template to be parsed when cross-posting (title, date, excerpt, slug, content)
+* buy more beer
