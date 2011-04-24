@@ -26,16 +26,14 @@ Requires at least: IP.Board 3.0 and PHP 5.2
 
 == Installation ==
 
-1. Upload `ipb-comments-for-wordpress.php` to the `/wp-content/plugins/` directory
+I would recommend installing the plugin from your WP Plugins menu.  Do a search for "ipb" and it should come up.  You can update easier in the future this way.  If you prefer to install it manually, see the comments below.
+
+1. Upload `ipb-comments-for-wordpress.php` and `ipb-comments-for-wordpress.css` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the Plugins menu in WordPress
-3. In the IPB Comments menu, enter the Base Url and Base Path to your forums.
-4. Enter the Member ID from your IPB forum to post as.
-5. Enter IPB category numbers that match your existing WordPress categories.
+3. Open Settings / IPB Comments submenu and add or edit the settings.
 
+You will need to edit the Base Url, Base Path, Member ID, and enter the IPB category # that corresponds to at least one WordPress category.  The Base Url should lead to your forum's main front page.  The Base Path should be the server path to the same location for your IPB root files.  This will be the directory path to the directory where the initdata.php file is located.  The Member ID should be a valid member ID from your IPB forum, with access to post HTML and access to post in the categories.  Usually, you can enter 1 and it will post as your default admin user.  Create any WordPress categories you need for the blog, and return to the IPB Comments submenu if needed.  You'll notice a list of each WordPress category printed to the right of some empty input blocks.  Enter the IPB category where you wish the new topics to be entered, whenever a WordPress post is made in the WP category shown directly to the right.
 
-== Upgrade Notice ==
-
-Nothing to do.
 
 == Screenshots ==
 
@@ -45,6 +43,9 @@ Nothing to do.
 4. The new topic created in the IP.Board forum category
 
 == Changelog ==
+
+= 1.1.4 =
+* Removed excess debug statements left in from testing
 
 = 1.1.3 =
 * Improved the topic creation url
@@ -62,14 +63,13 @@ Nothing to do.
 
 == Frequently Asked Questions ==
 
-Coming soon.
+Coming soon. See Other Notes for the To do list.
 
-== Donations ==
+== Other Notes ==
 
+= Donations =
 Donations are accepted.
 <http://bit.ly/hYv2Ly>
-
-== To Do ==
 
 = To Do =
 * add ability to display most recent X replies on WordPress post
@@ -79,3 +79,7 @@ Donations are accepted.
 * add ability to cross-post old WP posts to forum
 * add a post template to be parsed when cross-posting (title, date, excerpt, slug, content)
 * buy more beer
+
+= Thanks =
+* Martin A. from IPB forums for vital IPB assistance
+* Christophe from IPB forums for valuable feedback and suggestions
