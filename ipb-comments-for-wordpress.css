@@ -1,3 +1,4 @@
+/* Admin page styles */
 div.wrap ul.forum_settings li {
 	/*margin-top: 10px;*/
 }
@@ -17,4 +18,32 @@ div.wrap ul.category_settings li {
 div.wrap ul.category_settings li input {
 	margin-right: 15px;
 	margin-left: 10px;
+}
+
+/* Post page styles */
+p.ipb_discussion {
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	font-weight: bold;
+	padding: 15px;
+	/*border: 4px solid #333;*/
+}
+p.ipb_discussion:hover {
+	border-color: #00F;
+}
+p.ipb_discussion a {
+	color: #00F;
+}
+
+div#ipb_comments {
+	width: inherit;
+}
+div#ipb_comments ul li {
+	margin-bottom: 10px;
+	list-style: none;
+}
+
+div#ipb_comments ul li .ipb_comment_meta {
+	font-size: 0.8em;
 }

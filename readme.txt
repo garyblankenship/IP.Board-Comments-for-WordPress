@@ -10,7 +10,7 @@ Donate link:       http://bit.ly/hYv2Ly
 Requires at least: 3.0
 Tested up to:      3.1.1
 Stable tag:        1.1.4
-Version:           1.1.4
+Version:           1.2
 
 Use IP.Board to manage your comments.
 
@@ -44,6 +44,10 @@ You will need to edit the Base Url, Base Path, Member ID, and enter the IPB cate
 
 == Changelog ==
 
+= 1.2 =
+* Added support for IP.Board Topic replies to show as WP post comments
+* Added post styling to plugin stylesheet
+
 = 1.1.4 =
 * Removed excess debug statements left in from testing
 
@@ -72,7 +76,7 @@ Donations are accepted.
 <http://bit.ly/hYv2Ly>
 
 = To Do =
-* add ability to display most recent X replies on WordPress post
+* allow to configure most recent X forum replies to show on WordPress post comments
 * add ability to override/select a specific IPB category per post (Dashboard / New Post)
 * add ability to map specific WP Author/Editor/Admin users to IPB users (Dashboard / Users)
 * add ability to work with an IPB forum on a different server than WordPress install
