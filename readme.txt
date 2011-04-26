@@ -34,6 +34,7 @@ I would recommend installing the plugin from your WP Plugins menu.  Do a search 
 
 You will need to edit the Base Url, Base Path, Member ID, and enter the IPB category # that corresponds to at least one WordPress category.  The Base Url should lead to your forum's main front page.  The Base Path should be the server path to the same location for your IPB root files.  This will be the directory path to the directory where the initdata.php file is located.  The Member ID should be a valid member ID from your IPB forum, with access to post HTML and access to post in the categories.  Usually, you can enter 1 and it will post as your default admin user.  Create any WordPress categories you need for the blog, and return to the IPB Comments submenu if needed.  You'll notice a list of each WordPress category printed to the right of some empty input blocks.  Enter the IPB category where you wish the new topics to be entered, whenever a WordPress post is made in the WP category shown directly to the right.
 
+Important: IPB must be setup to use Friendly URLs, with mod_rewrite .htaccess enabled and being used.  Please research that before you begin testing.
 
 == Screenshots ==
 
@@ -76,6 +77,7 @@ Donations are accepted.
 <http://bit.ly/hYv2Ly>
 
 = To Do =
+* strip tags and bbcode from forum posts when reposting to WP as comments
 * allow to configure most recent X forum replies to show on WordPress post comments
 * add ability to override/select a specific IPB category per post (Dashboard / New Post)
 * add ability to map specific WP Author/Editor/Admin users to IPB users (Dashboard / Users)

@@ -6,13 +6,13 @@
 
 class WP_IPBComments {
 
-	var $ttl = 900;
-	var $last_replies = 5;
+	var $ttl = 180;                    // cache values will expire every 3 minutes or 180 seconds
+	var $last_replies = 5;             // maximum number of last replies to grab
 
 	var $topic_text = 'Follow the discussion in progress';
 	var $post_text = 'Read the full story here';
 
-	var $crosspost_edits = false;
+	var $crosspost_edits = false;      // don't change this yet
 
 	function __construct() {
 
@@ -221,10 +221,9 @@ class WP_IPBComments {
 				extract($row);
 
 				$post = wp_trim_excerpt( 
-								wp_strip_all_tags( 
-									preg_replace('/<br(\s+)?\/?>/i', "\n", $post )
-								) 
-							);
+						wp_strip_all_tags( 
+						preg_replace('/<br(\s+)?\/?>/i', "\n", str_replace(array('[',']'), array('<','>'), $post) )
+						) );
 
 				$replies[] = array( 'author' => $author_name, 'date' => $post_date, 'comment' => $post );
 			}
@@ -424,7 +423,7 @@ class WP_IPBComments {
 
 			$reply_content .= 
 				sprintf('<li>%s<br /><span class="ipb_comment_meta">posted by %s on %s</span></li>',
-					$comment, $author, date( get_option('date_format'), $date ) );
+					nl2br($comment), $author, date( get_option('date_format'), $date ) );
 		}
 
 		if ( empty( $reply_content ) ) return $comments;
