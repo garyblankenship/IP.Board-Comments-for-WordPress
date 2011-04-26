@@ -28,7 +28,7 @@ Requires at least: IP.Board 3.0 and PHP 5.2
 
 I would recommend installing the plugin from your WP Plugins menu.  Do a search for "ipb" and it should come up.  You can update easier in the future this way.  If you prefer to install it manually, see the comments below.
 
-1. Upload `ipb-comments-for-wordpress.php` and `ipb-comments-for-wordpress.css` to the `/wp-content/plugins/` directory
+1. Upload all files into the `/wp-content/plugins/ipb-comments-for-wordpress` directory
 2. Activate the plugin through the Plugins menu in WordPress
 3. Open Settings / IPB Comments submenu and add or edit the settings.
 
@@ -77,7 +77,6 @@ Donations are accepted.
 <http://bit.ly/hYv2Ly>
 
 = To Do =
-* strip tags and bbcode from forum posts when reposting to WP as comments
 * allow to configure most recent X forum replies to show on WordPress post comments
 * add ability to override/select a specific IPB category per post (Dashboard / New Post)
 * add ability to map specific WP Author/Editor/Admin users to IPB users (Dashboard / Users)
