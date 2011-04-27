@@ -150,7 +150,7 @@ class WP_IPBComments {
 				if ( ipsRegistry::$settings['use_friendly_urls'] AND ipsRegistry::$settings['seo_r_on'] ) {
 					$topicUrl = $registry->getClass( 'output' )->buildSEOUrl( 'showtopic=' .$topicData['tid'], 'public', $topicData['title_seo'], 'showtopic' );
 				} else {
-					$topicUrl = $registry->getClass( 'output' )->buildUrl( 'showtopic=' .$topicData['tid'], 'public', $topicData['title_seo'], 'showtopic' );
+					$topicUrl = $this->options['ipb_field_url'].'/index.php?showtopic='.intval($topicData['tid']);
 				}
 
 				// add custom field 'forum_topic_url' to our post

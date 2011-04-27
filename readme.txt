@@ -9,8 +9,8 @@ Author:            Beer
 Donate link:       http://bit.ly/hYv2Ly
 Requires at least: 3.0
 Tested up to:      3.1.1
-Stable tag:        1.2.3
-Version:           1.2.3
+Stable tag:        1.2.4
+Version:           1.2.4
 
 Use IP.Board to manage your comments.
 
@@ -72,7 +72,7 @@ You will need to edit the Base Url, Base Path, Member ID, and enter the IPB cate
 
 == Frequently Asked Questions ==
 
-Coming soon. See Other Notes for the To do list.
+See Other Notes for the To do list.
 
 == Other Notes ==
 
@@ -81,6 +81,8 @@ Donations are accepted.
 <http://bit.ly/hYv2Ly>
 
 = To Do =
+* move ttl to main settings 
+* move last replies to main settings
 * allow to configure most recent X forum replies to show on WordPress post comments
 * add ability to override/select a specific IPB category per post (Dashboard / New Post)
 * add ability to map specific WP Author/Editor/Admin users to IPB users (Dashboard / Users)
