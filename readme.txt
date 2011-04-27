@@ -9,8 +9,8 @@ Author:            Beer
 Donate link:       http://bit.ly/hYv2Ly
 Requires at least: 3.0
 Tested up to:      3.1.1
-Stable tag:        1.2.1
-Version:           1.2.1
+Stable tag:        1.2.2
+Version:           1.2.2
 
 Use IP.Board to manage your comments.
 
@@ -44,6 +44,9 @@ Important: IPB must be setup to use Friendly URLs, with mod_rewrite .htaccess en
 4. The new topic created in the IP.Board forum category
 
 == Changelog ==
+
+= 1.2.2 =
+* readme.txt update, still learning SVN
 
 = 1.2 =
 * Added support for IP.Board Topic replies to show as WP post comments
