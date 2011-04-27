@@ -3,14 +3,14 @@
 Contributors:      Beer
 Plugin Name:       IPB Comments for WordPress
 Plugin URI:        http://wordpress.org/extend/plugins/ipb-comments-for-wordpress/
-Tags:              invision, ipb, comments, ip.board, forum, crosspost
+Tags:              ipb, comments, ip.board, invision, forum, crosspost
 Author URI:        http://wordpress.org/extend/plugins/profile/beer
 Author:            Beer
 Donate link:       http://bit.ly/hYv2Ly
 Requires at least: 3.0
 Tested up to:      3.1.1
-Stable tag:        1.2.2
-Version:           1.2.2
+Stable tag:        1.2.3
+Version:           1.2.3
 
 Use IP.Board to manage your comments.
 
@@ -22,7 +22,7 @@ You may find it much easier to manage comments and users on the forum, rather th
 
 Your IPB installation must reside on the same server as your WordPress installation.
 
-Requires at least: IP.Board 3.0 and PHP 5.2
+Requires at least: IP.Board 3.0 and PHP 5.2.6
 
 == Installation ==
 
@@ -34,8 +34,6 @@ I would recommend installing the plugin from your WP Plugins menu.  Do a search 
 
 You will need to edit the Base Url, Base Path, Member ID, and enter the IPB category # that corresponds to at least one WordPress category.  The Base Url should lead to your forum's main front page.  The Base Path should be the server path to the same location for your IPB root files.  This will be the directory path to the directory where the initdata.php file is located.  The Member ID should be a valid member ID from your IPB forum, with access to post HTML and access to post in the categories.  Usually, you can enter 1 and it will post as your default admin user.  Create any WordPress categories you need for the blog, and return to the IPB Comments submenu if needed.  You'll notice a list of each WordPress category printed to the right of some empty input blocks.  Enter the IPB category where you wish the new topics to be entered, whenever a WordPress post is made in the WP category shown directly to the right.
 
-Important: IPB must be setup to use Friendly URLs, with mod_rewrite .htaccess enabled and being used.  Please research that before you begin testing.
-
 == Screenshots ==
 
 1. Screenshot of the IPB Comments menu
@@ -44,6 +42,9 @@ Important: IPB must be setup to use Friendly URLs, with mod_rewrite .htaccess en
 4. The new topic created in the IP.Board forum category
 
 == Changelog ==
+
+= 1.2.3 =
+* removed the friendly url requirement
 
 = 1.2.2 =
 * readme.txt update, still learning SVN

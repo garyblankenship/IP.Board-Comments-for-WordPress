@@ -3,7 +3,7 @@
 Plugin Name: IP.Board Comments
 Plugin URI: http://wordpress.org/extend/plugins/ipb-comments-for-wordpress/
 Description: Use IP.Board for your comments.  When a new post is published, it creates a new topic with your IP.Board and adds the link to the new topic at the end of your post.
-Version: 1.2.2
+Version: 1.2.3
 Author: Beer
 Author URI: http://wordpress.org/extend/plugins/profile/beer
 Donate Link: http://bit.ly/hYv2Ly

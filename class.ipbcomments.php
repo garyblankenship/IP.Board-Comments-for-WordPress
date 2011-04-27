@@ -147,7 +147,11 @@ class WP_IPBComments {
 				$topicData = $postClass->getTopicData();
 
 				// build the topic url using the IPB output class
-				$topicUrl = $registry->getClass( 'output' )->buildSEOUrl( 'showtopic=' .$topicData['tid'], 'public', $topicData['title_seo'], 'showtopic' );
+				if ( ipsRegistry::$settings['use_friendly_urls'] AND ipsRegistry::$settings['seo_r_on'] ) {
+					$topicUrl = $registry->getClass( 'output' )->buildSEOUrl( 'showtopic=' .$topicData['tid'], 'public', $topicData['title_seo'], 'showtopic' );
+				} else {
+					$topicUrl = $registry->getClass( 'output' )->buildUrl( 'showtopic=' .$topicData['tid'], 'public', $topicData['title_seo'], 'showtopic' );
+				}
 
 				// add custom field 'forum_topic_url' to our post
 				update_post_meta( $wp->ID, 'forum_topic_url', htmlentities($topicUrl));
@@ -415,6 +419,7 @@ class WP_IPBComments {
 		/**
 		 * format any valid forum replies
 		 */
+		$reply_content = '';
 		foreach ( $replies as $reply ) {
 			if (! is_array($reply)) continue;
 			extract($reply);
