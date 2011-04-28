@@ -203,6 +203,10 @@ class WP_IPBComments {
 		 */
 		ini_set( 'display_errors', 0 );
 
+		// Keep the board from redirecting
+		// http://community.invisionpower.com/tracker/issue-26224-issues-with-ssiphp/
+		define('CCS_GATEWAY_CALLED',FALSE);
+
 		require_once( $this->options['ipb_field_path'] .'/initdata.php' );
 
 		require_once( IPS_ROOT_PATH .'sources/base/ipsController.php' );
