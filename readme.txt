@@ -9,8 +9,8 @@ Author:            Beer
 Donate link:       http://bit.ly/hYv2Ly
 Requires at least: 3.0
 Tested up to:      3.1.1
-Stable tag:        1.2.4
-Version:           1.2.4
+Stable tag:        1.2.5
+Version:           1.2.5
 
 Use IP.Board to manage your comments.
 
@@ -42,6 +42,12 @@ You will need to edit the Base Url, Base Path, Member ID, and enter the IPB cate
 4. The new topic created in the IP.Board forum category
 
 == Changelog ==
+
+= 1.2.5 =
+* fixed an ipb redirect issue
+
+= 1.2.4 =
+* fixed an ipb url issue when furl is not active
 
 = 1.2.3 =
 * removed the friendly url requirement
@@ -83,6 +89,7 @@ Donations are accepted.
 = To Do =
 * move ttl to main settings 
 * move last replies to main settings
+* strip the session id from forum topic url that sometimes gets displayed
 * allow to configure most recent X forum replies to show on WordPress post comments
 * add ability to override/select a specific IPB category per post (Dashboard / New Post)
 * add ability to map specific WP Author/Editor/Admin users to IPB users (Dashboard / Users)

@@ -110,6 +110,11 @@ class WP_IPBComments {
 		 *
 		 * Source: http://community.invisionpower.com/resources/documentation/index.html/_/developer-resources/
 		 */
+
+		// Keep the board from redirecting
+		// http://community.invisionpower.com/tracker/issue-26224-issues-with-ssiphp/
+		define('CCS_GATEWAY_CALLED',FALSE);
+
 		require_once( $this->options['ipb_field_path'] .'/initdata.php' );
 
 		require_once( IPS_ROOT_PATH .'sources/base/ipsController.php' );
@@ -353,7 +358,7 @@ class WP_IPBComments {
 		foreach( $categories as $cat ) {
 			echo sprintf('<li><input type="text" size="2" name="ipb_comments_options[categories][%s]" value="%s" />%s</li>',
 				$cat->slug,
-				$this->options[categories][$cat->slug],
+				$this->options['categories'][$cat->slug],
 				$cat->name);
 		}
 		?>
