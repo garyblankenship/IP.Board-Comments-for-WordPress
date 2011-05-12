@@ -10,7 +10,7 @@ Donate link:       http://bit.ly/hYv2Ly
 Requires at least: 3.0
 Tested up to:      3.1.1
 Stable tag:        1.2.6
-Version:           1.2.6
+Version:           1.2.7
 
 Use IP.Board to manage your comments.
 
@@ -42,6 +42,9 @@ You will need to edit the Base Url, Base Path, Member ID, and enter the IPB cate
 4. The new topic created in the IP.Board forum category
 
 == Changelog ==
+
+= 1.2.7 =
+* setup shop at Github https://github.com/darkness/IP.Board-Comments-for-WordPress
 
 = 1.2.5 =
 * fixed an ipb redirect issue
