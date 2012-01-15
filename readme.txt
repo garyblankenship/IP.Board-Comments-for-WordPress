@@ -9,8 +9,8 @@ Author:            Beer
 Donate link:       http://bit.ly/hYv2Ly
 Requires at least: 3.0
 Tested up to:      3.3.1
-Stable tag:        1.2.9
-Version:           1.2.9
+Stable tag:        1.3.0
+Version:           1.3.0
 
 Use IP.Board to manage your comments.
 
@@ -42,6 +42,9 @@ You will need to edit the Base Url, Base Path, Member ID, and enter the IPB cate
 4. The new topic created in the IP.Board forum category
 
 == Changelog ==
+
+= 1.3.0 =
+* correcting the mistagged 1.2.9
 
 = 1.2.9 =
 * fixed a minor issue that affected the link text on the IPB forum post side of things
