@@ -9,8 +9,8 @@ Author:            Beer
 Donate link:       http://bit.ly/hYv2Ly
 Requires at least: 3.0
 Tested up to:      3.3.1
-Stable tag:        1.3.0
-Version:           1.3.0
+Stable tag:        1.3.0.1
+Version:           1.3.0.1
 
 Use IP.Board to manage your comments.
 
