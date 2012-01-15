@@ -2,13 +2,16 @@
 div.wrap ul.forum_settings li {
 	/*margin-top: 10px;*/
 }
-div.wrap ul.forum_settings li label {
+div.wrap ul.forum_settings li label, div.wrap ul.custom_settings li label {
 	display: block;
 	float: left;
 	width: 100px;
 	/*font-weight: bold;*/
 	text-align: bottom;
 	margin-top: 6px;
+}
+div.wrap ul.custom_settings li label {
+	width:150px;
 }
 div.wrap ul.category_settings li {
 	padding-bottom: 5px;

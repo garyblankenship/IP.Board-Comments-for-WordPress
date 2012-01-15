@@ -8,9 +8,9 @@ Author URI:        http://wordpress.org/extend/plugins/profile/beer
 Author:            Beer
 Donate link:       http://bit.ly/hYv2Ly
 Requires at least: 3.0
-Tested up to:      3.1.1
-Stable tag:        1.2.6
-Version:           1.2.7
+Tested up to:      3.3.1
+Stable tag:        1.2.9
+Version:           1.2.9
 
 Use IP.Board to manage your comments.
 
@@ -42,6 +42,12 @@ You will need to edit the Base Url, Base Path, Member ID, and enter the IPB cate
 4. The new topic created in the IP.Board forum category
 
 == Changelog ==
+
+= 1.2.9 =
+* fixed a minor issue that affected the link text on the IPB forum post side of things
+
+= 1.2.8 =
+* added a few additional configuration options to the Settings menu for IPB Comments
 
 = 1.2.7 =
 * setup shop at Github https://github.com/darkness/IP.Board-Comments-for-WordPress
@@ -93,12 +99,16 @@ Donations are accepted.
 * move ttl to main settings 
 * move last replies to main settings
 * strip the session id from forum topic url that sometimes gets displayed
+* add ability to remove last X forum replies
 * allow to configure most recent X forum replies to show on WordPress post comments
+* add number of forum replies to WP post "Follow the discussion (X comments)"
 * add ability to override/select a specific IPB category per post (Dashboard / New Post)
 * add ability to map specific WP Author/Editor/Admin users to IPB users (Dashboard / Users)
 * add ability to work with an IPB forum on a different server than WordPress install
 * add ability to cross-post old WP posts to forum
 * add a post template to be parsed when cross-posting (title, date, excerpt, slug, content)
+* add better error handling and requirement checking (is initdata.php in the right path, etc...)
+* add an optional IPB comment form if possible, in place of WP comments + recognize the IPB user
 * buy more beer
 
 = Thanks =

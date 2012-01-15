@@ -6,13 +6,9 @@
 
 class WP_IPBComments {
 
-	var $ttl = 180;                    // cache values will expire every 3 minutes or 180 seconds
-	var $last_replies = 5;             // maximum number of last replies to grab
+	public $ttl = 180;                    // cache values will expire every 3 minutes or 180 seconds
 
-	var $topic_text = 'Follow the discussion in progress';
-	var $post_text = 'Read the full story here';
-
-	var $crosspost_edits = false;      // don't change this yet
+	public $crosspost_edits = false;      // don't change this yet
 
 	function __construct() {
 
@@ -63,7 +59,21 @@ class WP_IPBComments {
 	 */
 	function register_comments() {
 
-		add_filter( 'comments_array', array($this,'show_forum_comments') );
+		switch ( $this->options['ipb_custom_link_filter'] ) {
+
+			case 'before_comments':
+			case 'after_comments':
+				add_filter( 'comments_array', array($this,'show_link_text') );
+				break;
+
+			case 'before_content':
+			case 'after_content':
+				add_filter( 'the_content', array($this,'show_link_text') );
+				break;
+
+			default:
+
+		}
 
 		// add action wp_print_styles isn't being called here, so workaround
 		wp_enqueue_style('ipbcomments_stylesheet' );
@@ -135,7 +145,7 @@ class WP_IPBComments {
 		// option to use excerpt or content should go here
 		$content = nl2br( $wp->post_content )
 			.'<br><br><a href="'.get_permalink( $wp->ID ).'">'
-			.$this->post_text
+			.$this->options['ipb_field_link_text_ipb']
 			.'</a></p>';
 
 		$postClass->setPostContentPreFormatted( $content );
@@ -219,7 +229,7 @@ class WP_IPBComments {
 							'from'  => 'posts',
 							'where' => 'topic_id = '.intval($topic_id),
 							'order' => 'post_date DESC',
-							'limit' => array(0,$this->last_replies)
+							'limit' => array(0,$this->options['ipb_field_show_comments'])
 							) 
 						);
 
@@ -305,11 +315,17 @@ class WP_IPBComments {
 		add_settings_field('ipb_field_url', 'IPB Base Url', 'ipb_setting_url', 'ipb_comments');
 
 		/**
+		 * IPB Comments custom settings section and fields
+		 */
+		add_settings_section('section_custom', 'Custom Settings', array($this,'section_custom'), 'ipb_comments');
+		add_settings_field('ipb_field_custom', 'IPB Custom Options', 'ipb_setting_custom', 'ipb_comments');
+
+		/**
 		 * IPB Comments category settings section and fields
 		 */
 		add_settings_section('section_categories', 'Category Settings', array($this,'section_categories'), 'ipb_comments');
 		add_settings_field('ipb_field_categories', 'IPB Category Options', 'ipb_setting_categories', 'ipb_comments');
-	
+
 		/**
 		 * Register the settings
 		 */
@@ -322,20 +338,33 @@ class WP_IPBComments {
 	 * Main Settings callback function
 	 */
 	function section_main() { 
+
+		// defaults
+		if ( empty( $this->options['ipb_field_member_id'] ) ) {
+			$this->options['ipb_field_member_id'] = 1;
+		}
+		if ( empty( $this->options['ipb_field_show_comments'] ) ) {
+			$this->options['ipb_field_show_comments'] = 0;
+		}
+		// errors
+		$error_ipb_field_path = '';
+		if ( ! file_exists( $this->options['ipb_field_path'].'/initdata.php' ) ) {
+			$error_ipb_field_path = ' style="color:red;"';
+		}
 		?>
 		<ul class="forum_settings">
 			<li>
 			<label for="base_url">Base Url:</label>
-			<input type="text" size="50" name="ipb_comments_options[ipb_field_url]" 
+			<input type="text" size="60" name="ipb_comments_options[ipb_field_url]" 
 				value="<?php echo $this->options['ipb_field_url']; ?>" />
 				<em>base url to your forum. ex. http://yourforum.com</em>
 			</li>
 	
 			<li>
 			<label for="base_path">Base Path:</label>
-			<input type="text" size="50" name="ipb_comments_options[ipb_field_path]" 
+			<input type="text" size="60" name="ipb_comments_options[ipb_field_path]" 
 				value="<?php echo $this->options['ipb_field_path']; ?>" />
-				<em>full path to your forum where initdata.php is located. ex. /var/www/forum</em>
+				<em<?php echo $error_ipb_field_path; ?>>full path to your forum where initdata.php is located. ex. /var/www/forum</em>
 			</li>
 	
 			<li>
@@ -343,6 +372,13 @@ class WP_IPBComments {
 			<input type="text" size="5" name="ipb_comments_options[ipb_field_member_id]" 
 				value="<?php echo $this->options['ipb_field_member_id']; ?>" />
 				<em>forum member ID who will create the new topics. ex. 1</em>
+			</li>
+			
+			<li>
+			<label for="show_comments">Comments:</label>
+			<input type="text" size="5" name="ipb_comments_options[ipb_field_show_comments]" 
+				value="<?php echo $this->options['ipb_field_show_comments']; ?>" />
+				<em>how many recent comments to display, 0 to disable</em>
 			</li>
 		</ul>
 		<br style="clear:both;" />
@@ -370,7 +406,91 @@ class WP_IPBComments {
 	<?php
 	}
 	
-	
+	/**
+	 * Custom Settings callback function
+	 */
+	function section_custom() {
+
+		// default settings
+		if ( empty( $this->options['ipb_field_link_text_wp'] ) ) {
+			$this->options['ipb_field_link_text_wp'] = 'Follow the discussion in progress';
+		}
+
+		if ( empty( $this->options['ipb_field_link_text_ipb'] ) ) {
+			$this->options['ipb_field_link_text_ipb'] = 'Read the full story here';
+		}
+
+		$radio = array('before_comments'=>'','after_comments'=>'','before_content'=>'','after_content'=>'');
+		extract($radio);
+		$key = $this->options['ipb_custom_link_filter'];
+		if ( empty($key) ) $key = 'before_comments';
+		$$key = 'checked';
+		?>
+		<ul class="custom_settings">
+
+			<li>
+			<label for="link_text_wp">WordPress Link Text</label>
+			<input type="text" size="60" name="ipb_comments_options[ipb_field_link_text_wp]" 
+				value="<?php echo $this->options['ipb_field_link_text_wp']; ?>" />
+				<em>ex. Follow the discussion in progress</em>
+			</li>
+
+			<li>
+			<label for="link_text_ipb">IP.Board Link Text</label>
+			<input type="text" size="60" name="ipb_comments_options[ipb_field_link_text_ipb]" 
+				value="<?php echo $this->options['ipb_field_link_text_ipb']; ?>" />
+				<em>ex. Read the full story here</em>
+			</li>
+
+			<li>
+			<label for="link_text_location">Link text location:</label>
+			<input type="radio" size="2" name="ipb_comments_options[ipb_custom_link_filter]" value="before_comments" 
+				<?php echo $before_comments; ?> /> Before Comments 
+			<input type="radio" size="2" name="ipb_comments_options[ipb_custom_link_filter]" value="after_comments"  
+				<?php echo $after_comments; ?> /> After Comments
+			  <br />
+			<input type="radio" size="2" name="ipb_comments_options[ipb_custom_link_filter]" value="before_content" 
+				<?php echo $before_content; ?> /> Before Content 
+			<input type="radio" size="2" name="ipb_comments_options[ipb_custom_link_filter]" value="after_content"  
+				<?php echo $after_content; ?> /> After Content
+			</li>
+
+		</ul>
+		<br style="clear:both;" />
+		<?php
+	}
+
+	/**
+	 * show link text
+	 */
+	function show_link_text ( $content ) {
+
+		// assemble the link
+		$meta = get_post_meta(get_the_ID(),'forum_topic_url');
+		if ( empty( $meta ) ) return $content;
+
+		$topic_link = current($meta);
+		$topic_link_text = $this->options['ipb_field_link_text_wp'];
+
+		$link = sprintf( '<p class="ipb_discussion"><a href="%s">%s</a></p>', $topic_link, $topic_link_text );
+
+		// add it to the content/comments
+		switch ( $this->options['ipb_custom_link_filter'] ) {
+
+			case 'before_comments':
+			case 'before_content':
+				return $link.$content;
+
+			case 'after_comments':
+			case 'after_content':
+				return $content.$link;
+
+			default:
+				return $content;
+		}
+
+	}
+
 	// ========================================
 	// == IPBComments Show Forum Comments =====
 	// ========================================
@@ -382,6 +502,8 @@ class WP_IPBComments {
 	function show_forum_comments ( $comments ) {
 	
 		if ( ! is_single() ) return $comments;
+		
+		if ( empty($this->options['ipb_field_show_comments']) ) return $comments;
 	
 		$post_ID = get_the_ID();
 
